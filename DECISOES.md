@@ -138,3 +138,4 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 4. Ligar as expressões de gravidade do texto à classe, após revisão clínica (hoje elas só entram na regressão).
 5. Guardar a posição a cada reordenação e dar bônus a quem foi ultrapassado muitas vezes.
 6. Auditoria de equidade da fila (município, distância, sexo).
+- **A limpeza dos dados não é reproduzível pelo repo:** entregamos os dados já limpos (`api/dataset_limpo/`) e o relatório `LIMPEZA.md` com cada correção e contagem, mas o script que fez a limpeza não está no repositório. Nada foi apagado: tudo que foi preenchido ou sinalizado tem coluna de aviso.
