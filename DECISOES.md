@@ -14,8 +14,8 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 ## 1. Limpeza dos dados (detalhe e contagens em `dataset_limpo/LIMPEZA.md`)
 - **Defeitos de formato corrigidos no valor:** CID sem ponto (32 linhas), prioridade com caixa/acento (23), município (50), nome (5), 8 eventos duplicados.
 - **Julgamento não apaga nada:** duplicatas de solicitação e prováveis saídas (desistência, cirurgia em outro serviço) viram **colunas de aviso**; o regulador decide. Eventos de solicitações que saíram da fila foram para `eventos_orfaos.csv`.
-- **Dor (EVA) e limitação vazias** (38 e 20 linhas): mediana (dor) e valor mais comum (limitação) **do mesmo CID**, sempre com coluna avisando (`dor_eva_imputada`, `limitacao_imputada`). Testamos a média no lugar da mediana: muda em média 0,44 ponto de dor e não altera classe; mantivemos a mediana (valor inteiro e estável em CIDs com poucos casos).
-- **Prioridade manual vazia (11):** marcada `nao informada`, **não preenchida**. Dor é dado clínico que entra no score; prioridade é uma decisão humana que não vamos inventar.
+- **Dor (EVA) e limitação vazias** (38 e 20 das 941 linhas; na fila de 900 são 34 e 19): mediana (dor) e valor mais comum (limitação) **do mesmo CID**, sempre com coluna avisando (`dor_eva_imputada`, `limitacao_imputada`). Testamos a média no lugar da mediana: muda em média 0,44 ponto de dor e não altera classe; mantivemos a mediana (valor inteiro e estável em CIDs com poucos casos).
+- **Prioridade manual vazia (11 das 941; 10 na fila de 900):** marcada `nao informada`, **não preenchida**. Dor é dado clínico que entra no score; prioridade é uma decisão humana que não vamos inventar.
 
 ## 2. Classificação SWALIS (primeira regra que casar)
 | Ordem | Condição | Classe |
@@ -31,7 +31,7 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 | 9 | Demais | D |
 
 - **Sinais de piora** (eventos): reavaliação com piora, progressão em imagem, relato de piora ao call center, ida ao pronto-socorro, internação.
-- **Oncologia pelo CID, não pela flag** (a flag diverge do CID em 44 casos).
+- **Oncologia pelo CID, não pela flag** (a flag diverge do CID em 44 das 941 solicitações; 40 na fila de 900).
 - Um paciente com câncer **nunca** fica em C ou D, o que garante a regra de ouro pela estrutura.
 
 ## 3. Score (0 a 1000)
@@ -44,7 +44,7 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 | Bônus de esquecido | +15 se esperou mais de 5x o prazo (só reordena dentro da classe) |
 | Gravidade (0 a 50) | Dor 2 por ponto (até 20); limitação grave/moderada/leve 12/6/2; sinais de piora 3 cada (até 9); ASA ≥ 3: 3; diabetes descompensando: 3; pedido do médico no texto: 3 |
 
-- **Trava:** os extras (tempo + gravidade + risco reservado) somam no máximo 150, e as classes ficam ≥ 170 pontos distantes. Ninguém muda de classe por pontos extras. Há um `assert` em `pontos.py` que quebra se alguém mexer num peso e violar isso.
+- **Trava:** os extras (tempo 45 + esquecido 15 + gravidade 50 + risco 40) somam no máximo 150, e as classes ficam ≥ 170 pontos distantes. Ninguém muda de classe por pontos extras. Há um `assert` em `pontos.py` que quebra se alguém mexer num peso e violar isso.
 - **Alerta "esquecido":** quem espera mais de 3x o prazo da classe é sinalizado na justificativa (378 pacientes).
 - **Diabetes descompensando:** última HbA1c > 8,5% e subida ≥ 1 ponto desde a primeira medida.
 - **Idade e outros dados demográficos (sexo, município, distância) não entram** na priorização. Em nossos dados a idade quase não se relaciona com piora (correlação 0,04), e priorizar por idade levantaria questões de equidade.
@@ -118,17 +118,17 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 
 ## 7. Resultado
 - 941 solicitações → **900 posições**: A1 36 · A2 167 · B 229 · C 211 · D 257. As duas ordens (com e sem risco) passam no verificador oficial.
-- Verificador oficial: **OK**. Posição mediana dos oncológicos (CID `C*`): 113 de 900; 100% no primeiro terço.
+- Verificador oficial: **OK**. Posição mediana dos oncológicos (CID `C*`): 101 de 900 na ordem com risco e 113 na ordem só com regras; 100% no primeiro terço nas duas.
 - Pacientes sem urgência clínica no último terço: 95%.
 
 ## 8. Limitações (honestidade)
 - **Os pesos são heurísticos**: as classes e os prazos vêm do SWALIS, mas os valores de cada ponto foram escolhidos por nós e **não foram validados por especialista clínico**. Em produção seriam calibrados com reguladores e cirurgiões. Como os pontos só ordenam dentro da classe, o impacto de um peso inadequado é limitado.
 - **A decisão que mais pesa é a classe**, e as regras de classe também são nossas, a partir do SWALIS e dos dados.
 - Eventos anteriores à entrada na fila (22 sinais de PS ou internação) **também contam** como sinal de piora nas regras (a regressão usa só os posteriores à entrada).
-- Todo ida ao PS e toda internação contam como piora, mesmo as "atendido_liberado".
+- Toda ida ao PS e toda internação contam como piora, mesmo as "atendido_liberado".
 - A leitura do texto é por expressões regulares e pode errar em redações incomuns.
 - Não há histórico de posições no dataset (é uma foto de um dia), então o conceito de "paciente ultrapassado várias vezes" só pode ser tratado aproximadamente, pelo tempo de espera.
-
+- **A flag manual de piora é ignorada.** 34 pacientes têm a flag "sim" sem nenhum evento que mostre piora, e 22 deles estão em C ou D. O sistema só alerta o regulador ("ATENÇÃO: o cadastro marca que o paciente piorou, mas não há evento"); ele não usa a flag para subir de classe, porque o próprio dicionário do dataset a descreve como desatualizada.
 - **Área do paciente:** as 900 perguntas geradas por LLM, as perguntas-modelo e a lista de palavras de alerta não foram revisadas por profissionais de saúde (seção 3e). O login do paciente é de protótipo e os endpoints do regulador não têm login (seção 3g).
 
 ## 9. Próximos passos
