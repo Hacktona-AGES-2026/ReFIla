@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+.DS_Store
+eventos_novos.csv
+decisoes_regulador.csv
+fila_final_regulador.csv
+backend/
+respostas_paciente.csv
+.env
+mensagens_paciente.csv
