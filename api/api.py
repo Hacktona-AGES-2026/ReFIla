@@ -27,7 +27,7 @@ RESPOSTAS = "respostas_paciente.csv"
 RELATOS = AC.MENSAGENS          # relatos em texto livre do paciente (pendentes ate o regulador decidir)
 INVESTIGACAO = "lista_investigacao.csv"
 ORDENS = list(R.ARQ_ORDEM)
-LIMITE_REVISAO = 60
+LIMITE_REVISAO = 1000
 
 app = FastAPI(title="ReFila")
 app.add_middleware(
@@ -108,7 +108,12 @@ def alertas(r):
     if r.flag_oncologico_diverge:
         lista.append(f"Flag oncologico '{r.flag_oncologico}' diverge do CID.")
     if r.flag_piora_diverge:
-        lista.append("Flag de piora clinica desatualizada em relacao aos eventos.")
+        if str(r.flag_piora_clinica).lower() == "sim":
+            lista.append("ATENÇÃO: o cadastro marca que o paciente PIOROU, mas não há nenhum evento registrando isso. "
+                         "A posição não considera essa marcação. Confirme com o paciente ou a equipe e, se a piora for real, lance o evento.")
+        else:
+            lista.append("O cadastro diz que o paciente NÃO piorou, mas há eventos de piora no histórico. "
+                         "A posição já usa os eventos, então não precisa de ação. O cadastro é que está desatualizado.")
     if r.flag_diabetico_subnotificado:
         lista.append("Diabetes no texto, comorbidade ou HbA1c, mas a flag diz 'nao'.")
     if r.dor_eva_imputada:
