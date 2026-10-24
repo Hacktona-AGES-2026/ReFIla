@@ -1,0 +1,10 @@
+evento_id,solicitacao_id,paciente_id,data_evento,tipo_evento,resultado,valor_numerico,descricao,origem,paciente_ainda_na_fila
+EVT-000262,SOL-2025-00998,PAC-02391,2025-11-02,hba1c,resultado,6.6,"HbA1c 6,6%.",laboratorio,False
+EVT-000267,SOL-2025-00904,PAC-02734,2025-11-09,hba1c,resultado,8.4,"HbA1c 8,4%.",laboratorio,False
+EVT-000287,SOL-2023-00941,PAC-02238,2025-11-24,falta,consulta,,Registro de solicitacao removida da fila.,ambulatorio,False
+EVT-000345,SOL-2025-00909,PAC-02088,2026-01-09,falta,consulta,,Registro de solicitacao removida da fila.,ambulatorio,False
+EVT-000491,SOL-2023-00926,PAC-02573,2026-04-27,hba1c,resultado,9.3,"HbA1c 9,3%.",laboratorio,False
+EVT-000562,SOL-2023-00927,PAC-02397,2026-05-24,falta,consulta,,Registro de solicitacao removida da fila.,ambulatorio,False
+EVT-000623,SOL-2025-00955,PAC-02044,2026-06-18,contato_telefonico,atendeu,,Registro de solicitacao removida da fila.,call center,False
+EVT-000768,SOL-2024-00960,PAC-02914,2026-07-21,falta,consulta,,Registro de solicitacao removida da fila.,ambulatorio,False
+EVT-001020,SOL-2024-00962,PAC-02218,2026-08-29,falta,consulta,,Registro de solicitacao removida da fila.,ambulatorio,False
