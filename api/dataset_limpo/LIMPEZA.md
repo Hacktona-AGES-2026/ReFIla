@@ -1,6 +1,8 @@
 # Relatório de limpeza do dataset
 
-Gerado por `limpar_dataset.py`. Todos os números abaixo foram **medidos nos dados**, não estimados. Dados sintéticos; data de referência 23/10/2026.
+
+Os dados limpos em `dataset_limpo/` foram gerados na preparação dos dados; as contagens abaixo foram medidas neles.
+
 
 **Princípio:** o que é *defeito de formato* foi corrigido no próprio valor. O que é *julgamento* (ex.: "isso parece duplicata") **não apaga nada**: vira uma coluna nova, para o regulador decidir. A fila continua com **941 linhas**; a fila passou de 31 para 47 colunas.
 
