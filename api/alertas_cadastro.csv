@@ -1,0 +1,68 @@
+solicitacao_id,cid_principal,cid_descricao,flag_oncologico,oncologico_pelo_cid,biopsia_positiva_cid_nao_oncologico,flag_oncologico_diverge
+SOL-2026-00191,C44.9,"Neoplasia maligna da pele, nao especificada",nao,True,False,True
+SOL-2026-00647,D44.0,Neoplasia de comportamento incerto da glandula tireoide,nao,False,True,False
+SOL-2026-00380,K57.3,Doenca diverticular do colon sem perfuracao ou abscesso,nao,False,True,False
+SOL-2026-00615,D05.1,Carcinoma in situ intraductal da mama,nao,False,True,False
+SOL-2025-00149,C61,Neoplasia maligna da prostata,nao,True,False,True
+SOL-2026-00502,D24,Neoplasia benigna da mama,nao,False,True,False
+SOL-2025-00196,D24,Neoplasia benigna da mama,sim,False,False,True
+SOL-2026-00519,E04.1,Bocio nao-toxico uninodular,nao,False,True,False
+SOL-2025-00508,D23.9,"Neoplasia benigna da pele, nao especificada",sim,False,False,True
+SOL-2026-00583,K40.9,"Hernia inguinal unilateral, sem obstrucao ou gangrena",sim,False,False,True
+SOL-2026-00782,C61,Neoplasia maligna da prostata,nao,True,False,True
+SOL-2022-00049,D14.3,Neoplasia benigna dos bronquios e pulmao,sim,False,False,True
+SOL-2026-00543,C50.4,Neoplasia maligna do quadrante superior externo da mama,nao,True,False,True
+SOL-2025-00252,K80.1,Calculose da vesicula biliar com outra colecistite,sim,False,False,True
+SOL-2026-00155,C61,Neoplasia maligna da prostata,nao,True,False,True
+SOL-2024-00121,K80.1,Calculose da vesicula biliar com outra colecistite,sim,False,False,True
+SOL-2025-00295,C61,Neoplasia maligna da prostata,nao,True,False,True
+SOL-2026-00809,C20,Neoplasia maligna do reto,nao,True,False,True
+SOL-2026-00864,C50.9,"Neoplasia maligna da mama, nao especificada",nao,True,False,True
+SOL-2026-00279,D44.0,Neoplasia de comportamento incerto da glandula tireoide,nao,False,True,False
+SOL-2026-00283,K51.0,Retocolite ulcerativa,nao,False,True,False
+SOL-2026-00757,D37.4,Neoplasia de comportamento incerto do colon,nao,False,True,False
+SOL-2026-00486,M16.0,Coxartrose primaria bilateral,sim,False,False,True
+SOL-2026-00574,D25.1,Leiomioma intramural do utero,sim,False,False,True
+SOL-2025-00324,C34.3,"Neoplasia maligna do lobo inferior, bronquio ou pulmao",nao,True,False,True
+SOL-2026-00537,E04.2,Bocio nao-toxico multinodular,nao,False,True,False
+SOL-2026-00738,H25.0,Catarata senil incipiente,sim,False,False,True
+SOL-2026-00131,C16.2,Neoplasia maligna do corpo do estomago,nao,True,False,True
+SOL-2025-00435,N20.1,Calculose do ureter,sim,False,False,True
+SOL-2026-00359,N60.1,Mastopatia cistica difusa,nao,False,True,False
+SOL-2025-00350,N20.0,Calculose do rim,sim,False,False,True
+SOL-2026-00557,C16.9,"Neoplasia maligna do estomago, nao especificado",nao,True,False,True
+SOL-2026-00263,H25.8,Outras cataratas senis,sim,False,False,True
+SOL-2026-00466,D25.1,Leiomioma intramural do utero,sim,False,False,True
+SOL-2026-00460,C50.9,"Neoplasia maligna da mama, nao especificada",nao,True,False,True
+SOL-2025-00420,C16.2,Neoplasia maligna do corpo do estomago,nao,True,False,True
+SOL-2025-00224,C16.0,Neoplasia maligna da cardia,nao,True,False,True
+SOL-2025-00478,D12.6,"Neoplasia benigna do colon, nao especificado",nao,False,True,False
+SOL-2025-00309,D05.1,Carcinoma in situ intraductal da mama,nao,False,True,False
+SOL-2026-00392,H25.8,Outras cataratas senis,sim,False,False,True
+SOL-2026-00791,J34.2,Desvio do septo nasal,sim,False,False,True
+SOL-2026-00355,R91,Achados anormais em exames para diagnostico por imagem do pulmao,nao,False,True,False
+SOL-2023-00010,C18.7,Neoplasia maligna do colon sigmoide,nao,True,False,True
+SOL-2025-00280,M16.0,Coxartrose primaria bilateral,sim,False,False,True
+SOL-2026-00995,K40.9,"Hernia inguinal unilateral, sem obstrucao ou gangrena",sim,False,False,True
+SOL-2026-00311,K40.9,"Hernia inguinal unilateral, sem obstrucao ou gangrena",sim,False,False,True
+SOL-2025-00378,H25.0,Catarata senil incipiente,sim,False,False,True
+SOL-2025-00360,E04.2,Bocio nao-toxico multinodular,nao,False,True,False
+SOL-2026-00273,D05.1,Carcinoma in situ intraductal da mama,nao,False,True,False
+SOL-2026-00351,D44.0,Neoplasia de comportamento incerto da glandula tireoide,nao,False,True,False
+SOL-2026-00602,C50.9,"Neoplasia maligna da mama, nao especificada",nao,True,False,True
+SOL-2026-00379,D05.1,Carcinoma in situ intraductal da mama,nao,False,True,False
+SOL-2026-00232,D22.9,"Nevo melanocitico, nao especificado",nao,False,True,False
+SOL-2025-00495,M23.2,Transtorno do menisco devido a ruptura ou lesao antiga,sim,False,False,True
+SOL-2026-00601,K40.9,"Hernia inguinal unilateral, sem obstrucao ou gangrena",sim,False,False,True
+SOL-2026-00879,D37.1,Neoplasia de comportamento incerto do estomago,nao,False,True,False
+SOL-2025-00351,L72.0,Cisto epidermico,nao,False,True,False
+SOL-2024-00147,C61,Neoplasia maligna da prostata,nao,True,False,True
+SOL-2024-00017,E04.2,Bocio nao-toxico multinodular,sim,False,False,True
+SOL-2026-00572,D22.9,"Nevo melanocitico, nao especificado",sim,False,False,True
+SOL-2026-00441,D25.1,Leiomioma intramural do utero,nao,False,True,False
+SOL-2026-00103,C18.0,Neoplasia maligna do ceco,nao,True,False,True
+SOL-2026-00003,D48.6,Neoplasia de comportamento incerto da mama,nao,False,True,False
+SOL-2026-00776,C44.3,Neoplasia maligna da pele de outras partes e partes nao especificadas da face,nao,True,False,True
+SOL-2026-00816,C20,Neoplasia maligna do reto,nao,True,False,True
+SOL-2026-00036,C73,Neoplasia maligna da glandula tireoide,nao,True,False,True
+SOL-2026-00610,D25.9,"Leiomioma do utero, nao especificado",nao,False,True,False
