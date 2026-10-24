@@ -130,6 +130,7 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 - Não há histórico de posições no dataset (é uma foto de um dia), então o conceito de "paciente ultrapassado várias vezes" só pode ser tratado aproximadamente, pelo tempo de espera.
 - **A flag manual de piora é ignorada.** 34 pacientes têm a flag "sim" sem nenhum evento que mostre piora, e 22 deles estão em C ou D. O sistema só alerta o regulador ("ATENÇÃO: o cadastro marca que o paciente piorou, mas não há evento"); ele não usa a flag para subir de classe, porque o próprio dicionário do dataset a descreve como desatualizada.
 - **Área do paciente:** as 900 perguntas geradas por LLM, as perguntas-modelo e a lista de palavras de alerta não foram revisadas por profissionais de saúde (seção 3e). O login do paciente é de protótipo e os endpoints do regulador não têm login (seção 3g).
+- **A limpeza dos dados não é reproduzível pelo repo:** entregamos os dados já limpos (`api/dataset_limpo/`) e o relatório `LIMPEZA.md` com cada correção e contagem, mas o script que fez a limpeza não está no repositório. Nada foi apagado: tudo que foi preenchido ou sinalizado tem coluna de aviso.
 
 ## 9. Próximos passos
 1. **Revisão clínica** das regras de classe, dos pesos, das perguntas do paciente e da lista de palavras de alerta, e calibração dos pesos com reguladores e cirurgiões (hoje são heurísticos).
@@ -138,4 +139,3 @@ dados limpos -> sinais de piora (eventos) -> CLASSE (regras) -> score 0-1000 -> 
 4. Ligar as expressões de gravidade do texto à classe, após revisão clínica (hoje elas só entram na regressão).
 5. Guardar a posição a cada reordenação e dar bônus a quem foi ultrapassado muitas vezes.
 6. Auditoria de equidade da fila (município, distância, sexo).
-- **A limpeza dos dados não é reproduzível pelo repo:** entregamos os dados já limpos (`api/dataset_limpo/`) e o relatório `LIMPEZA.md` com cada correção e contagem, mas o script que fez a limpeza não está no repositório. Nada foi apagado: tudo que foi preenchido ou sinalizado tem coluna de aviso.
